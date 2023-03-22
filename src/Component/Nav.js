@@ -5,9 +5,7 @@ import { FaSearch } from "react-icons/fa";
 
 const Nav = () => {
   const LocalContext = React.useContext(Context);
-  const [categories, setCategoryData] = React.useState(LocalContext.categories);
-  const [moviesData, setMovieData] = React.useState(LocalContext.movies);
-  const [reviewsData, setReviewData] = React.useState(Context.reviews);
+  const { categories, movies } = LocalContext;
   const user = JSON.parse(sessionStorage.getItem("user"));
 
   window.addEventListener("scroll", () => {
@@ -17,8 +15,8 @@ const Nav = () => {
 
   const searchInput = React.useRef();
   const handleSearch = () => {
-    moviesData.map((m) => {
-      const resultSearch = moviesData.filter((m) =>
+    movies.map((m) => {
+      const resultSearch = movies.filter((m) =>
         m.name.toLowerCase().includes(searchInput.current.value.toLowerCase())
       );
       LocalContext.setMovie(resultSearch);
@@ -52,7 +50,7 @@ const Nav = () => {
               </a>
               <div className="dropdown-menu">
                 <a
-                  className="dropdown-item"
+                  className="dropdown-item btn"
                   onClick={() => {
                     LocalContext.setMovie(
                       JSON.parse(localStorage.getItem("movie"))
@@ -69,7 +67,7 @@ const Nav = () => {
                         key={index}
                         onClick={() => {
                           LocalContext.setMovie(
-                            moviesData.filter(
+                            movies.filter(
                               (m) => m.cateId == category.cateId
                             )
                           );

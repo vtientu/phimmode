@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../App";
+import Header from "../Component/Header";
+import Nav from "../Component/Nav";
 
 const Home = () => {
   const LocalContext = React.useContext(Context);
@@ -20,6 +22,8 @@ const Home = () => {
 
   return (
     <>
+      <Nav />
+      <Header />
       <div className="container mt-5" style={{ height: "800px" }}>
         <h1 className="title">Danh sách phim</h1>
         <div className="row overflow-scroll">
@@ -37,8 +41,10 @@ const Home = () => {
                 />
                 <div className="movie_hover py-4">
                   <h5 className="card-title">{movie.name}</h5>
-                  <p className="card-text ">Rating: {coverageRate(movie.id) || '0'}</p>
-                  <Link className="btn btn-outline-danger my-3">Đánh giá</Link>
+                  <p className="card-text ">
+                    Rating: {coverageRate(movie.id) || "0"}
+                  </p>
+                  <Link className="btn btn-outline-danger my-3" to={`/movie/${movie.id}`}>Đánh giá</Link>
                 </div>
               </div>
             </div>

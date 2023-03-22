@@ -10,6 +10,7 @@ import accountsData from "./Data/account.json";
 import moviesData from "./Data/movie.json";
 import reviewsData from "./Data/review.json";
 import categoriesData from "./Data/category.json";
+import Detail from "./Pages/Detail";
 export const Context = React.createContext();
 
 function App() {
@@ -19,23 +20,16 @@ function App() {
     window.location.reload();
     navigate("/");
   };
-  
 
-  const [accounts, setAccount] = React.useState(
-    JSON.parse(localStorage.getItem("account"))
-  );
+  const [accounts, setAccount] = React.useState([]);
 
-  const [movies, setMovie] = React.useState(
-    JSON.parse(localStorage.getItem("movie"))
-  );
+  const [movies, setMovie] = React.useState([]);
 
-  const [categories, setCategory] = React.useState(
-    JSON.parse(localStorage.getItem("category"))
-  );
+  const [categories, setCategory] = React.useState([]);
 
-  const [reviews, setReviews] = React.useState(
-    JSON.parse(localStorage.getItem("review"))
-  );
+  const [reviews, setReviews] = React.useState([]);
+
+
   useEffect(() => {
     const accountLocal = localStorage.getItem("account");
     if (accountLocal) {
@@ -43,6 +37,7 @@ function App() {
       setAccount(account);
     } else {
       localStorage.setItem("account", JSON.stringify(accountsData));
+	  setAccount(JSON.parse(localStorage.getItem("account")));
     }
   }, []);
 
@@ -53,16 +48,18 @@ function App() {
       setMovie(movie);
     } else {
       localStorage.setItem("movie", JSON.stringify(moviesData));
+	  setMovie(JSON.parse(localStorage.getItem("movie")));
     }
   }, []);
 
   useEffect(() => {
     const categoryLocal = localStorage.getItem("category");
-    if (categoryLocal) {
+    if (!categoryLocal) {
       const category = JSON.parse(categoryLocal);
-      setCategory(categoryLocal);
+      setCategory(category);
     } else {
-      localStorage.setItem("category", JSON.stringify(categoriesData));
+    	localStorage.setItem("category", JSON.stringify(categoriesData));
+		setCategory(JSON.parse(localStorage.getItem("category")));
     }
   }, []);
 
@@ -73,6 +70,7 @@ function App() {
       setReviews(review);
     } else {
       localStorage.setItem("review", JSON.stringify(reviewsData));
+	  setReviews(JSON.parse(localStorage.getItem("review")));
     }
   }, []);
 
@@ -90,10 +88,9 @@ function App() {
           setReviews,
         }}
       >
-        <Nav />
-        <Header />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/movie/:id" element={<Detail />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/logout" element={<Logout />} />
