@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "accountID": 1,
+        "movieID": 1,
+        "score": 5,
+        "cmt": "Hay bình thường"
+    },
+    {
+        "id": 2,
+        "accountID": 2,
+        "movieID": 1,
+        "score": 6,
+        "cmt": "Tạm được"
+    },
+    {
+        "id": 3,
+        "accountID": 3,
+        "movieID": 1,
+        "score": 7,
+        "cmt": "Thừa tiền thì đi xem"
+    },
+    {
+        "id": 4,
+        "accountID": 4,
+        "movieID": 1,
+        "score": 4,
+        "cmt": "Nhảm"
+    }
+]

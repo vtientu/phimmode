@@ -1,0 +1,114 @@
+[
+    {
+        "id": 1,
+        "name": "THÁNH VẬT CỦA QUỶ- C18",
+        "year": "2021",
+        "cateId": 3,
+        "description": "Chuyện phim cuốn khán giả vào không khí ma quái đang bao trùm lấy tu viện Mount Savior nằm sâu trong Cao nguyên Scotland",
+        "image": "https://chieuphimquocgia.com.vn/Content/Images/0016777_0.jpeg"
+    },
+    {
+        "id": 2,
+        "name": "NGƯỜI KIẾN VÀ CHIẾN BINH ONG 2D/C13: Thế giới lượng tử",
+        "year": "2023",
+        "cateId": 5,
+        "description": "Scott Lang và Hope Van Dyne trở lại tiếp tục cuộc phiêu lưu của họ với vai trò Người Kiến và Chiến binh Ong",
+        "image": "https://chieuphimquocgia.com.vn/Content/Images/0016748_0.jpeg"
+    },
+    {
+        "id": 3,
+        "name": "MÈO BÉO SIÊU ĐẲNG- P ( lồng tiếng )",
+        "year": "2023",
+        "cateId": 1,
+        "description": "Maurice - một chú mèo ngốc nghếch biết nói với biệt tài lừa đảo kiếm tiền siêu đỉnh. Darktan - chỉ huy của đàn chuột tinh quái đang có âm mưu với người bạn Maurice của mình về một hòn đảo thiên đường, nơi mà loài chuột và con người sống hòa bình với nhau",
+        "image": "https://chieuphimquocgia.com.vn/Content/Images/0016732_0.jpeg"
+    },
+    {
+        "id": 4,
+        "name": "NHÀ BÀ NỮ- C16",
+        "year": "2023",
+        "cateId": 2,
+        "description": "Phim xoay quanh gia đình của bà Nữ (nghệ sĩ Lê Giang đảm nhận) - người làm nghề bán bánh canh",
+        "image": "https://chieuphimquocgia.com.vn/Content/Images/0016689_0.jpeg"
+    },
+    {
+        "id": 5,
+        "name": "CHUỘT NHÍ VÀ SỨ MỆNH THẦN BIỂN (lồng tiếng)-P",
+        "year": "2021",
+        "cateId": 4,
+        "description": "Bé Tí – một chú chuột nhỏ thông minh luôn mang trong mình một ước mơ to lớn là được trở thành một vị anh hùng thám hiểm như Anh Hùng Biển vĩ đại. Nhưng với Bố Bự - chú mèo đã nhận nuôi cô thì đây là điều hão huyền",
+        "image": "https://chieuphimquocgia.com.vn/Content/Images/0016781_0.jpeg"
+    },
+    {
+        "id": 6,
+        "name": "THANH GƯƠM DIỆT QUỶ: ĐƯỜNG ĐẾN LÀNG RÈN GƯƠM-C13",
+        "year": "2021",
+        "cateId": 4,
+        "description": "Thanh Gươm Diệt Quỷ: Đường Đến Làng Rèn Gươm sẽ tái hiện trận chiến khốc liệt nhất tại Phố Đèn Đỏ",
+        "image": "https://chieuphimquocgia.com.vn/Content/Images/0016813_0.jpeg"
+    },
+    {
+        "id": 7,
+        "name": "TÌM NHÀ CHO BOSS- P",
+        "year": "2023",
+        "cateId": 6,
+        "description": "Chuyến hành trình đi tìm chủ mới cho chú chó Runie cùng những tình huống dở khóc dở cười của hai anh em Jin Guk và Min Su",
+        "image": "https://chieuphimquocgia.com.vn/Content/Images/0016812_0.jpeg"
+    },
+    {
+        "id": 8,
+        "name": "VONG HỒN RƯỚC LỄ- C18",
+        "year": "2023",
+        "cateId": 3,
+        "description": "Dựa trên truyền thuyết đô thị kinh dị bậc nhất Tây Ban Nha, Vong Hồn Rước Lễ kể về hồn ma ác nghiệt trú ngụ trong thân xác của một con búp bê",
+        "image": "https://chieuphimquocgia.com.vn/Content/Images/0016818_0.jpeg"
+    },
+    {
+        "id": 9,
+        "name": "CUỘC CHIẾN ĐA VŨ TRỤ - C18 (giải phim hay nhất tại Oscar 95)",
+        "year": "2023",
+        "cateId": 1,
+        "description": "Một phụ nữ trung niên nhập cư người Trung Quốc bị cuốn vào một cuộc phiêu lưu điên cuồng, nơi cô ấy một mình giải cứu thế giới bằng cách khám phá các vũ trụ khác và các bản thể khác của chính cô",
+        "image": "https://chieuphimquocgia.com.vn/Content/Images/0016821_0.jpeg"
+    },
+    {
+        "id": 10,
+        "name": "SHAZAM! CƠN THỊNH NỘ CỦA CÁC VỊ THẦN- C13",
+        "year": "2023",
+        "cateId": 1,
+        "description": "Một tác phẩm từ New Line Cinema mang tên “Shazam! Fury of the Gods,” tiếp tục câu chuyện về chàng trai Billy Batson, và bản ngã Siêu anh hùng trưởng thành của mình sau khi hô cụm từ “SHAZAM !,” ma thuật",
+        "image": "https://chieuphimquocgia.com.vn/Content/Images/0016747_0.jpeg"
+    },
+    {
+        "id": 11,
+        "name": "KHÓA CHẶT CỬA NÀO SUZUME (PHỤ ĐỀ VIỆT, ANH) - P",
+        "year": "2023",
+        "cateId": 4,
+        "description": "Khóa Chặt Cửa Nào Suzume kể câu chuyện khi Suzume vô tình gặp một chàng trai trẻ đến thị trấn nơi cô sinh sống với mục đích tìm kiếm một cánh cửa",
+        "image": "https://chieuphimquocgia.com.vn/Content/Images/0016786_0.jpeg"
+    },
+    {
+        "id": 12,
+        "name": "65 - TRẬN CHIẾN THỜI TIỀN SỬ- C13",
+        "year": "2023",
+        "cateId": 1,
+        "description": "Sau cú va chạm thảm khốc, tàu vũ trụ của Mills (Adam Driver) bay thẳng đến một hành tinh không xác định. Với kiến thức nhạy bén của mình, Mills nhanh chóng nhận ra hành tinh không xác định này chính là Trái Đất của 65 triệu năm trước",
+        "image": "https://chieuphimquocgia.com.vn/Content/Images/0016788_0.jpeg"
+    },
+    {
+        "id": 13,
+        "name": "13 NGHI THỨC TRỪ TÀ- C18",
+        "year": "2023",
+        "cateId": 3,
+        "description": "Sau hành vi kỳ lạ của thiếu niên Laura Villegas, gia đình cô đã gọi một chuyên gia trừ tà được Vatican phê chuẩn để can thiệp vào trường hợp bị quỷ ám. Từ đó hàng loạt hiện tượng kỳ lạ xuất hiện",
+        "image": "https://chieuphimquocgia.com.vn/Content/Images/0016811_0.jpeg"
+    },
+    {
+        "id": 14,
+        "name": "SIÊU LỪA GẶP SIÊU LẦY- C16",
+        "year": "2021",
+        "cateId": 6,
+        "description": "Thuộc phong cách hành động – hài hước với các “cú lừa” thông minh và lầy lội đến từ bộ đôi Tú (Anh Tú) và Khoa (Mạc Văn Khoa), Siêu Lừa Gặp Siêu Lầy của đạo diễn Võ Thanh Hòa theo chân của Khoa – tên lừa đảo tầm cỡ “quốc nội” đến đảo ngọc Phú Quốc với mong muốn đổi đời",
+        "image": "https://chieuphimquocgia.com.vn/Content/Images/0016720_0.jpeg"
+    }
+]

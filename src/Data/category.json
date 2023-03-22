@@ -1,0 +1,26 @@
+[
+    {
+        "cateId": 1,
+        "name": "Hành động"
+    },
+    {
+        "cateId": 2,
+        "name": "Tình cảm"
+    },
+    {
+        "cateId": 3,
+        "name": "Kinh dị"
+    },
+    {
+        "cateId": 4,
+        "name": "Hoạt hình"
+    },
+    {
+        "cateId": 5,
+        "name": "Khoa học nghệ thuật"
+    },
+    {
+        "cateId": 6,
+        "name": "Phim hài"
+    }
+]
