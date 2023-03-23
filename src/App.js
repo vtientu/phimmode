@@ -1,9 +1,7 @@
 import { Routes, Route, useNavigate } from "react-router-dom";
 import React, { useEffect } from "react";
 import "./App.css";
-import Header from "./Component/Header";
 import Home from "./Pages/Home";
-import Nav from "./Component/Nav";
 import Login from "./Pages/Login";
 import Signup from "./Pages/Signup";
 import accountsData from "./Data/account.json";
@@ -11,6 +9,8 @@ import moviesData from "./Data/movie.json";
 import reviewsData from "./Data/review.json";
 import categoriesData from "./Data/category.json";
 import Detail from "./Pages/Detail";
+import Category from "./Pages/Category";
+import ListCategory from "./Pages/Admin/ListCategory";
 export const Context = React.createContext();
 
 function App() {
@@ -29,7 +29,6 @@ function App() {
 
   const [reviews, setReviews] = React.useState([]);
 
-
   useEffect(() => {
     const accountLocal = localStorage.getItem("account");
     if (accountLocal) {
@@ -37,7 +36,7 @@ function App() {
       setAccount(account);
     } else {
       localStorage.setItem("account", JSON.stringify(accountsData));
-	  setAccount(JSON.parse(localStorage.getItem("account")));
+      setAccount(JSON.parse(localStorage.getItem("account")));
     }
   }, []);
 
@@ -48,7 +47,7 @@ function App() {
       setMovie(movie);
     } else {
       localStorage.setItem("movie", JSON.stringify(moviesData));
-	  setMovie(JSON.parse(localStorage.getItem("movie")));
+      setMovie(JSON.parse(localStorage.getItem("movie")));
     }
   }, []);
 
@@ -58,8 +57,8 @@ function App() {
       const category = JSON.parse(categoryLocal);
       setCategory(category);
     } else {
-    	localStorage.setItem("category", JSON.stringify(categoriesData));
-		setCategory(JSON.parse(localStorage.getItem("category")));
+      localStorage.setItem("category", JSON.stringify(categoriesData));
+      setCategory(JSON.parse(localStorage.getItem("category")));
     }
   }, []);
 
@@ -70,7 +69,7 @@ function App() {
       setReviews(review);
     } else {
       localStorage.setItem("review", JSON.stringify(reviewsData));
-	  setReviews(JSON.parse(localStorage.getItem("review")));
+      setReviews(JSON.parse(localStorage.getItem("review")));
     }
   }, []);
 
@@ -90,10 +89,13 @@ function App() {
       >
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/movie/:id" element={<Detail />} />
+          <Route path="/category/:cid" element={<Category />} />
+          <Route path="/movie/:mid" element={<Detail />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/logout" element={<Logout />} />
+          <Route path="/admin/list-category" element={<ListCategory/>} />
+          <Route path="*" element={<h1>404 Not Found</h1>} />
         </Routes>
       </Context.Provider>
     </>

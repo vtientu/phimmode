@@ -1,17 +1,20 @@
 import React from "react";
-import { Link, useParams } from "react-router-dom";
-import { Context } from "../App";
-import Header from "../Component/Header";
+import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Nav from "../Component/Nav";
 
-const Home = () => {
-  const movies = JSON.parse(localStorage.getItem("movie"));
-  const reviews = JSON.parse(localStorage.getItem("review"));
-  const LocalContext = React.useContext(Context);
+const Category = () => {
+  const { cid } = useParams();
+  const [movies, setMovie] = React.useState([]);
+  const [reviews, setReviews] = React.useState([]);
+
+  const LocalMovies = JSON.parse(localStorage.getItem("movie"));
+  const LocalReviews = JSON.parse(localStorage.getItem("review"));
+
   const coverageRate = (mid) => {
     let count = 0;
     let total = 0;
-    reviews.forEach((review) => {
+    LocalReviews.forEach((review) => {
       if (review.movieID === mid) {
         count++;
         total += Number(review.score);
@@ -21,14 +24,25 @@ const Home = () => {
     return total / count;
   };
 
+  React.useEffect(() => {
+    if (cid !== "all") {
+      const moviesCate = LocalMovies.filter((movie) => movie.cateId == cid);
+      console.log(moviesCate);
+      setMovie(moviesCate);
+    } else {
+      setMovie(JSON.parse(localStorage.getItem("movie")));
+    }
+  }, [cid]);
+
+  console.log(movies);
+
   return (
     <>
       <Nav />
-      <Header />
-      <div className="container mt-5" style={{ height: "800px" }}>
+      <div className="container" style={{marginTop: '100px'}}>
         <h1 className="title">Danh sách phim</h1>
         <div className="row overflow-scroll">
-          {LocalContext.movies.map((movie, index) => (
+          {movies.map((movie, index) => (
             <div key={index} className="col-12 col-md-3 p-3">
               <div className="card m-2 movie_item">
                 <img
@@ -61,4 +75,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Category;

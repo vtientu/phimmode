@@ -5,13 +5,11 @@ import { FaSearch } from "react-icons/fa";
 
 const Nav = () => {
   const LocalContext = React.useContext(Context);
-  const { categories, movies } = LocalContext;
+  const categories = JSON.parse(localStorage.getItem("category"));
+  const movies = JSON.parse(localStorage.getItem("movie"));
   const user = JSON.parse(sessionStorage.getItem("user"));
 
-  window.addEventListener("scroll", () => {
-    const nav = document.querySelector(".nav-bg");
-    nav.classList.toggle("bg-black", window.scrollY > 0);
-  });
+  
 
   const searchInput = React.useRef();
   const handleSearch = () => {
@@ -25,8 +23,8 @@ const Nav = () => {
 
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-dark nav-bg fixed-top">
-        <a className="navbar-brand" href="#">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-black fixed-top">
+        <a className="navbar-brand text-light">
           Phim Hay
         </a>
         <button
@@ -45,36 +43,26 @@ const Nav = () => {
               </Link>
             </li>
             <li className="nav-item dropdown">
-              <a className="nav-link" href="#" data-toggle="dropdown">
+              <a className="nav-link btn" data-toggle="dropdown">
                 Thể Loại
               </a>
               <div className="dropdown-menu">
-                <a
+                <Link
                   className="dropdown-item btn"
-                  onClick={() => {
-                    LocalContext.setMovie(
-                      JSON.parse(localStorage.getItem("movie"))
-                    );
-                  }}
+                  to={"/category/all"}
                 >
                   All
-                </a>
+                </Link>
                 {categories.map((category, index) => {
                   return (
                     <>
-                      <a
+                      <Link
                         className="dropdown-item btn"
                         key={index}
-                        onClick={() => {
-                          LocalContext.setMovie(
-                            movies.filter(
-                              (m) => m.cateId == category.cateId
-                            )
-                          );
-                        }}
+                        to={`/category/${category.cateId}`}
                       >
                         {category.name}
-                      </a>
+                      </Link>
                     </>
                   );
                 })}
@@ -95,7 +83,7 @@ const Nav = () => {
             <li className="nav-item">
               {user ? (
                 <>
-                  <a className="nav-link" href="#">
+                  <a className="nav-link btn">
                     {user.name != ""
                       ? "Tài khoản: " + user.name
                       : user.username}

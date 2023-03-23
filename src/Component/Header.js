@@ -3,12 +3,12 @@ import React, { Component } from "react";
 const Header = () => {
     return (
       <>
-        <div className="header position-relative">
+        <div className="header mt-5">
           <div
             id="carouselExampleIndicators"
             className="carousel slide"
             data-ride="carousel"
-            data-interval="4000"
+            data-interval="3500"
           >
             <ol className="carousel-indicators">
               <li

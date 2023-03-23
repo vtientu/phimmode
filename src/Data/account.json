@@ -5,6 +5,7 @@
         "userName": "admin",
         "password": "123",
         "name": "admin",
+        "active": true,
         "role": 1
     },
     {
@@ -13,6 +14,7 @@
         "userName": "thanh",
         "password": "123",
         "name": "Lê Công Thành",
+        "active": true,
         "role": 2
     },
     {
@@ -21,6 +23,7 @@
         "userName": "tu",
         "password": "123",
         "name": "Văn Tiến Tú",
+        "active": true,
         "role": 2
     },
     {
@@ -29,6 +32,7 @@
         "userName": "duyngu",
         "password": "123",
         "name": "Duy Anh",
+        "active": true,
         "role": 2
     }
 ]
