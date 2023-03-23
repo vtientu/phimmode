@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaPencilAlt } from "react-icons/fa";
 import { FaHome, FaUser } from "react-icons/fa";
 import { BiCategory, BiMoviePlay } from "react-icons/bi";
 import { GoSignOut } from "react-icons/go";
@@ -8,7 +7,6 @@ import { GoSignOut } from "react-icons/go";
 const Sidebar = () => {
   return (
     <>
-      <div className="row" id="body-row">
         <div
           id="sidebar-container"
           className="sidebar-expanded d-none d-md-block"
@@ -22,7 +20,7 @@ const Sidebar = () => {
             >
               <div className="d-flex w-100 justify-content-start align-items-center">
                 <FaHome className="mr-3"></FaHome>
-                <span className="menu-collapsed">Back to Phim Mode</span>
+                <span className="menu-collapsed"><Link to="/">Back to Phim Mode</Link></span>
                 <span className="submenu-icon ml-auto"></span>
               </div>
             </a>
@@ -58,7 +56,7 @@ const Sidebar = () => {
             >
               <div className="d-flex w-100 justify-content-start align-items-center">
                 <BiMoviePlay className="mr-3"></BiMoviePlay>
-                <span className="menu-collapsed">Movies</span>
+                <span className="menu-collapsed"><Link to="/admin/movie">Movies</Link></span>
                 <span className="submenu-icon ml-auto"></span>
               </div>
             </a>
@@ -93,12 +91,12 @@ const Sidebar = () => {
             >
               <div className="d-flex w-100 justify-content-start align-items-center">
                 <GoSignOut className="mr-3"></GoSignOut>
-                <span className="menu-collapsed">Logout</span>
+                <span className="menu-collapsed"><Link to="/logout">Logout</Link></span>
               </div>
             </a>
           </ul>
         </div>
-      </div>
+        
     </>
   );
 };

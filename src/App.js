@@ -29,8 +29,9 @@ function App() {
 
   const [reviews, setReviews] = React.useState([]);
 
+  
+  const accountLocal = localStorage.getItem("account");
   useEffect(() => {
-    const accountLocal = localStorage.getItem("account");
     if (accountLocal) {
       const account = JSON.parse(accountLocal);
       setAccount(account);
@@ -38,10 +39,11 @@ function App() {
       localStorage.setItem("account", JSON.stringify(accountsData));
       setAccount(JSON.parse(localStorage.getItem("account")));
     }
-  }, []);
+  }, [accountLocal]);
 
+  
+  const movieLocal = localStorage.getItem("movie");
   useEffect(() => {
-    const movieLocal = localStorage.getItem("movie");
     if (movieLocal) {
       const movie = JSON.parse(movieLocal);
       setMovie(movie);
@@ -49,21 +51,23 @@ function App() {
       localStorage.setItem("movie", JSON.stringify(moviesData));
       setMovie(JSON.parse(localStorage.getItem("movie")));
     }
-  }, []);
+  }, [movieLocal]);
 
+  
+  const categoryLocal = localStorage.getItem("category");
   useEffect(() => {
-    const categoryLocal = localStorage.getItem("category");
-    if (!categoryLocal) {
+    if (categoryLocal) {
       const category = JSON.parse(categoryLocal);
       setCategory(category);
     } else {
       localStorage.setItem("category", JSON.stringify(categoriesData));
       setCategory(JSON.parse(localStorage.getItem("category")));
     }
-  }, []);
+  }, [categoryLocal]);
 
+
+  const reviewLocal = localStorage.getItem("review");
   useEffect(() => {
-    const reviewLocal = localStorage.getItem("review");
     if (reviewLocal) {
       const review = JSON.parse(reviewLocal);
       setReviews(review);
@@ -71,7 +75,7 @@ function App() {
       localStorage.setItem("review", JSON.stringify(reviewsData));
       setReviews(JSON.parse(localStorage.getItem("review")));
     }
-  }, []);
+  }, [reviewLocal]);
 
   return (
     <>
@@ -94,8 +98,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/logout" element={<Logout />} />
-          <Route path="/admin/list-category" element={<ListCategory/>} />
-          <Route path="*" element={<h1>404 Not Found</h1>} />
+          <Route path="/admin" element={<ListCategory/>} />
         </Routes>
       </Context.Provider>
     </>

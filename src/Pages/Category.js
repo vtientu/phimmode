@@ -1,9 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Nav from "../Component/Nav";
+import { Context } from "../App";
 
 const Category = () => {
+  const LocalContext = React.useContext(Context);
   const { cid } = useParams();
   const [movies, setMovie] = React.useState([]);
   const [reviews, setReviews] = React.useState([]);
@@ -29,8 +30,10 @@ const Category = () => {
       const moviesCate = LocalMovies.filter((movie) => movie.cateId == cid);
       console.log(moviesCate);
       setMovie(moviesCate);
+      LocalContext.setMovie(moviesCate);
     } else {
       setMovie(JSON.parse(localStorage.getItem("movie")));
+      LocalContext.setMovie(JSON.parse(localStorage.getItem("movie")));
     }
   }, [cid]);
 
@@ -42,7 +45,7 @@ const Category = () => {
       <div className="container" style={{marginTop: '100px'}}>
         <h1 className="title">Danh sách phim</h1>
         <div className="row overflow-scroll">
-          {movies.map((movie, index) => (
+          {LocalContext.movies.map((movie, index) => (
             <div key={index} className="col-12 col-md-3 p-3">
               <div className="card m-2 movie_item">
                 <img

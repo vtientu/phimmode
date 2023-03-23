@@ -9,8 +9,6 @@ const Nav = () => {
   const movies = JSON.parse(localStorage.getItem("movie"));
   const user = JSON.parse(sessionStorage.getItem("user"));
 
-  
-
   const searchInput = React.useRef();
   const handleSearch = () => {
     movies.map((m) => {
@@ -24,9 +22,7 @@ const Nav = () => {
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-black fixed-top">
-        <a className="navbar-brand text-light">
-          Phim Hay
-        </a>
+        <a className="navbar-brand text-light">Phim Hay</a>
         <button
           className="navbar-toggler"
           type="button"
@@ -47,10 +43,7 @@ const Nav = () => {
                 Thể Loại
               </a>
               <div className="dropdown-menu">
-                <Link
-                  className="dropdown-item btn"
-                  to={"/category/all"}
-                >
+                <Link className="dropdown-item btn" to={"/category/all"}>
                   All
                 </Link>
                 {categories.map((category, index) => {
@@ -83,11 +76,18 @@ const Nav = () => {
             <li className="nav-item">
               {user ? (
                 <>
-                  <a className="nav-link btn">
-                    {user.name != ""
-                      ? "Tài khoản: " + user.name
-                      : user.username}
-                  </a>
+                  <li className="nav-item dropdown">
+                    <a className="nav-link btn" data-toggle="dropdown">
+                      {user.name != ""
+                        ? "Tài khoản: " + user.name
+                        : user.username}
+                    </a>
+                    <div className="dropdown-menu">
+                      <Link className="dropdown-item btn" to={"/admin"}>
+                        Manager Movie
+                      </Link>
+                    </div>
+                  </li>
                 </>
               ) : (
                 <Link className="nav-link" to="/login">

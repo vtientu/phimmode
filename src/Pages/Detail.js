@@ -11,7 +11,7 @@ const Detail = () => {
   const movie = movies.find((movie) => movie.id === Number(mid));
   const category = categories.find((c) => c.cateId === movie.cateId);
 
-  const [reviewShow, setReviewShow] = React.useState(reviews);
+  const [reviewShow, setReviewShow] = React.useState([]);
 
   const user = JSON.parse(sessionStorage.getItem("user"));
 
@@ -19,19 +19,22 @@ const Detail = () => {
   const cmtRef = React.useRef();
 
   const handleReview = () => {
-	  const messageRe = document.getElementById("messageReview");
-	if (scoreRef.current.value.length == 0 || cmtRef.current.value.length == 0) {
-		messageRe.style.display = "block";
-		messageRe.style.color = "red";
-		messageRe.innerHTML = "Vui lòng nhập đầy đủ thông tin";
-		return;
-	}
-	if (scoreRef.current.value < 0 || scoreRef.current.value > 10) {
-		messageRe.style.display = "block";
-		messageRe.style.color = "red";
-		messageRe.innerHTML = "Điểm đánh giá phải từ 0 đến 10";
-		return;
-	}
+    const messageRe = document.getElementById("messageReview");
+    if (
+      scoreRef.current.value.length == 0 ||
+      cmtRef.current.value.length == 0
+    ) {
+      messageRe.style.display = "block";
+      messageRe.style.color = "red";
+      messageRe.innerHTML = "Vui lòng nhập đầy đủ thông tin";
+      return;
+    }
+    if (scoreRef.current.value < 0 || scoreRef.current.value > 10) {
+      messageRe.style.display = "block";
+      messageRe.style.color = "red";
+      messageRe.innerHTML = "Điểm đánh giá phải từ 0 đến 10";
+      return;
+    }
     const accounts = JSON.parse(sessionStorage.getItem("user"));
     const review = {
       id: reviews.length + 1,
@@ -40,17 +43,22 @@ const Detail = () => {
       score: scoreRef.current.value,
       cmt: cmtRef.current.value,
     };
-	reviews.map((r) => {
-		if (r.accountID === user.accountID) {
-			r.score = scoreRef.current.value;
-			r.cmt = cmtRef.current.value;
-		}
-	})
-	messageRe.style.display = "block";
-	messageRe.style.color = "green";
-	messageRe.innerHTML = "Đánh giá thành công";
+    reviews.map((r) => {
+      if (!reviews.find((r) => r.movieID === movie.id)) {
+        reviews.push(review);
+      }
+
+      if (r.accountID === user.accountID) {
+        r.score = scoreRef.current.value;
+        r.cmt = cmtRef.current.value;
+      }
+    });
+    messageRe.style.display = "block";
+    messageRe.style.color = "green";
+    messageRe.innerHTML = "Đánh giá thành công";
     localStorage.setItem("review", JSON.stringify(reviews));
-	setReviewShow(reviews);
+    setReviewShow(reviews);
+    console.log("re-render");
   };
 
   const getAccountReview = (id) => {
@@ -60,9 +68,16 @@ const Detail = () => {
   };
 
   const getReviewed = (aid) => {
-    const reviewed = reviews.find((r) => r.accountID === Number(aid));
+    const reviewed = reviews.find(
+      (r) => r.accountID === Number(aid) && r.movieID === Number(mid)
+    );
     return reviewed;
   };
+
+  React.useEffect(() => {
+    const reviewShow = reviews.filter((r) => r.movieID === Number(mid));
+    setReviewShow(reviewShow);
+  }, [reviews]);
 
   return (
     <>
@@ -94,7 +109,11 @@ const Detail = () => {
                       className="form-control col-3"
                       ref={scoreRef}
                       id="score"
-					  defaultValue={user ? getReviewed(user.accountID).score : ""}
+                      defaultValue={
+                        user && getReviewed(user.accountID)
+                          ? getReviewed(user.accountID).score
+                          : ""
+                      }
                     />
                   </div>
                   <div className="form-group mt-3">
@@ -104,13 +123,17 @@ const Detail = () => {
                       rows="5"
                       id="comment"
                       ref={cmtRef}
-					  defaultValue={user ? getReviewed(user.accountID).cmt : ""}
-                    >
-                    </textarea>
+                      defaultValue={
+                        user && getReviewed(user.accountID)
+                          ? getReviewed(user.accountID).cmt
+                          : ""
+                      }
+                    ></textarea>
                   </div>
-				  <p id="messageReview" style={{display: 'none'}}>
-				  </p>
-                  <button onClick={handleReview} className="btn btn-primary">Đánh giá</button>
+                  <p id="messageReview" style={{ display: "none" }}></p>
+                  <button onClick={handleReview} className="btn btn-primary">
+                    Đánh giá
+                  </button>
                 </>
               ) : (
                 <Link to="/login" className="btn btn-primary">
@@ -120,16 +143,20 @@ const Detail = () => {
 
               <div className="my-5 border-top pt-5">
                 <h3>Bình luận</h3>
-                {reviewShow.map((r, index) => {
-                  return (
-                    <p key={index}>
-                      <strong className="mr-3 my-5">
-                        {getAccountReview(r.accountID).name}:
-                      </strong>
-                      {r.cmt}
-                    </p>
-                  );
-                })}
+                {reviewShow ? (
+                  reviewShow.map((r, index) => {
+                    return (
+                      <p key={index}>
+                        <strong className="mr-3 my-5">
+                          {getAccountReview(r.accountID).name}:
+                        </strong>
+                        {r.cmt}
+                      </p>
+                    );
+                  })
+                ) : (
+                  <p>Chưa có bình luận nào</p>
+                )}
               </div>
             </div>
           </div>

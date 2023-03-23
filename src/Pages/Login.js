@@ -1,6 +1,7 @@
 import React from "react";
 import { FaGoogle, FaFacebook, FaTwitter } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
+import Nav from "../Component/Nav";
 import data from "../Data/account.json";
 const Login = () => {
   const navigate = useNavigate();
@@ -66,7 +67,8 @@ const Login = () => {
 
   return (
     <>
-      <div className="content my-5">
+    <Nav/>
+      <div className="content my-5 pt-5">
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-md-6 contents">

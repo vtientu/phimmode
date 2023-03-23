@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import data from "../Data/account.json";
 import { Context } from "../App";
+import Nav from "../Component/Nav";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -47,17 +48,17 @@ const Signup = () => {
     const fullNameValue = fullNameRef.current.value;
     const userCheck = account.find((item) => item.userName == userValue);
     const emailCheck = account.find((item) => item.email == emailValue);
-    const messageLogin = document.querySelector(".message-login");
+    const messageLogin = document.querySelector("#message-login");
     if (userCheck) {
-      messageLogin.innerHTML = "";
+      messageLogin.innerHTML = " ";
       messageLogin.style.display = "block";
       messageLogin.innerHTML = "Tài khoản đã tồn tại";
     } else if (emailCheck) {
-      messageLogin.innerHTML = "";
+      messageLogin.innerHTML = " ";
       messageLogin.style.display = "block";
       messageLogin.innerHTML = "Email đã tồn tại";
     } else if (passwordValue !== rePasswordValue) {
-      messageLogin.innerHTML = "";
+      messageLogin.innerHTML = " ";
       messageLogin.style.display = "block";
       messageLogin.innerHTML = "Mật khẩu không khớp";
     } else {
@@ -77,7 +78,8 @@ const Signup = () => {
 
   return (
     <>
-      <div className="content my-5">
+    <Nav/>
+      <div className="content my-5 pt-5">
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-md-6 contents">
@@ -166,7 +168,7 @@ const Signup = () => {
                       </span>
                     </div>
                     <p
-                      id="messageLogin"
+                      id="message-login"
                       style={{ display: "none", color: "red" }}
                     ></p>
                     <button
